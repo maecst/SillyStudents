@@ -13,6 +13,7 @@
  */
 class Student {
     
+    // student constructor
     function __construct() {
         $this->surname = '';
         $this->first_name = '';
@@ -20,14 +21,17 @@ class Student {
         $this->grades = array();
     }
     
+    // function to add an email for a student
     function add_email($which, $address) {
         $this->emails[$which] = $address;
     } 
     
+    // function to add a grade for a student
     function add_grade($grade) {
         $this->grades[] = $grade;
     }
 
+    // function to compute the average grade for a student
     public function average() {
         $total = 0;
 
@@ -38,9 +42,10 @@ class Student {
         return $total / count($this->grades);
     }
 
+    // toString function to display info for a student
     function toString() {
         $result = $this->first_name . ' ' . $this->surname;
-        $result = '(' . $this->average() . ")\n";
+        $result .= ' (' . $this->average() . ")\n";
         
         foreach ($this->emails as $which => $what) {
             $result .= $which . ':' . $what . "\n";
@@ -49,6 +54,5 @@ class Student {
         
         return '<pre>' . $result . '</pre>';
     }
-
 
 }
